@@ -7,9 +7,9 @@
     <!-- Meta Tags -->
     <title>The Blockman Go Preservation Project</title>
     <meta name="title" content="The Blockman Go Preservation Project">
-    <meta name="description" content="A community project by Steve Xinpa to preserve the classic, precompiled versions of Blockman Go. Download the stable Engine 10038 or the historic 2020 Engine 10072.">
+    <meta name="description" content="The full, honest story of the drama, the betrayal, and why these rare Blockman Go engines are now public.">
     <meta property="og:title" content="The Blockman Go Preservation Project">
-    <meta property="og:description" content="The drama has to end. The files are public now.">
+    <meta property="og:description" content="Here's what really happened. The full story and all the files.">
     <!-- Make sure to replace this with a screenshot! -->
     <meta property="og:image" content="https://i.imgur.com/YOUR-IMAGE-ID.png"> 
     <meta property="twitter:card" content="summary_large_image">
@@ -63,6 +63,10 @@
             margin-top: 0;
             color: #fff;
         }
+        
+        .manifesto strong {
+            color: #ff4747;
+        }
 
         .section-title {
             text-align: center;
@@ -95,22 +99,14 @@
         
         .tag.working { background-color: #28a745; }
         .tag.bricked { background-color: #6c757d; }
-
-        .pro-tip {
-            background-color: #2a2a18;
-            border-left: 4px solid #ffc107;
+        
+        .chaos-tip {
+            background-color: #2b1d1d;
+            border-left: 4px solid #ff4747;
             padding: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             border-radius: 4px;
             font-size: 0.9rem;
-        }
-        .pro-tip a {
-            color: #ffc107;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        .pro-tip a:hover {
-            text-decoration: underline;
         }
 
         .notice {
@@ -123,35 +119,7 @@
         }
         .notice strong { color: #00e5ff; }
         .notice p { margin: 0.5rem 0; }
-
-        /* NEW SECTION STYLE */
-        .call-to-action {
-            background-color: #2b1d1d;
-            border: 1px solid #ff4747;
-            padding: 2rem;
-            border-radius: 4px;
-            margin-top: 4rem;
-        }
-        .call-to-action h2 {
-            font-family: 'Source Code Pro', monospace;
-            margin-top: 0;
-            color: #ff4747;
-        }
-        .call-to-action ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .call-to-action li {
-            margin-bottom: 1rem;
-        }
-        .call-to-action li::before {
-            content: '»';
-            color: #ff4747;
-            margin-right: 0.8rem;
-            font-weight: bold;
-        }
-
-
+        
         .download-btn {
             display: inline-block;
             background-color: #ccc;
@@ -160,13 +128,78 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             transition: background-color 0.2s ease;
         }
+        .download-btn:hover { background-color: #fff; }
 
-        .download-btn:hover {
-            background-color: #fff;
+        /* NEW SECTION */
+        .final-note {
+            background-color: #191919;
+            padding: 1.5rem 2rem;
+            border-radius: 4px;
+            text-align: center;
+            margin-bottom: 3rem;
         }
+        .final-note p { margin: 0 0 1rem 0; font-size: 1.1rem; color: #fff; }
+        .learn-more-btn {
+            background: none;
+            border: 1px solid #666;
+            color: #ccc;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .learn-more-btn:hover { background-color: #333; color: #fff; }
+
+        /* POPUP MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: #191919;
+            padding: 2rem;
+            border-radius: 5px;
+            max-width: 600px;
+            width: 90%;
+            border-top: 4px solid #ff4747;
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+        .modal-content h2 { margin-top: 0; color: #fff; }
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .modal-close-btn:hover { color: #fff; }
 
         footer {
             text-align: center;
@@ -182,14 +215,15 @@
     <div class="container">
         <header class="header">
             <h1>THE BLOCKMAN GO PRESERVATION PROJECT</h1>
-            <p class="subtitle">It's Time To End This.</p>
+            <p class="subtitle">Here's What Really Happened.</p>
         </header>
 
         <section class="manifesto">
-            <h2>Why I'm sharing everything.</h2>
-            <p>Working on this stuff, trying to get these old engines running... it's been a huge part of my life. Maybe too big. Honestly, in some ways, Blockman Go coding has kind of ruined it.</p>
-            <p>I recently made a video about Engine 10072. The drama that came from that—the gatekeeping, the arguments—it was the final straw. The secrecy around these files has caused nothing but problems. It's not worth the stress.</p>
-            <p>So I'm done with it. The only way to end the drama is to end the secrecy. If everyone has the files, then no one can hold them over anyone else. This is everything. It's yours now.</p>
+            <h2>The Full, Unfiltered Story.</h2>
+            <p>This isn't some noble project. This is the result of a complete mess that I had a part in. In some ways, this whole thing has ruined my life, and I'm done with it.</p>
+            <p>It started with trades I made for apps. Then my friend, <strong>Gytis</strong>, gave me the server engine. <strong>He was never supposed to give it to me,</strong> and in doing so, he betrayed our other friend, <strong>Vasu</strong>. By accepting the files, I was part of that betrayal. I'm not hiding from that.</p>
+            <p>I was naive and made a YouTube video about the 2020 engine. The chaos was instant. The fallout was fast. I was banned from Vasu's Discord project, <strong>'BlockyVerse'</strong>, which was his own server for the 2020 engine. That was the final straw.</p>
+            <p>The whole problem was that these engines were <strong>rare</strong>. That rarity is what people used for power. After the ban, I decided to destroy the one thing they cared about: the secrecy. I turned my server into a <strong>No Rules, Free Admin Land,</strong> and leaked the conversations back to Vasu. Now, I'm ending it for good by making these files public. If they aren't rare anymore, they can't be used as a weapon. The power trip is over.</p>
         </section>
         
         <div class="notice">
@@ -197,41 +231,69 @@
             <p>These precompiled versions work perfectly on Windows 11. However, to compile the engines from scratch, you would need the original source code (not included here) and would have to run Windows 10.</p>
         </div>
 
+        <!-- NEW SECTION -->
+        <div class="final-note">
+            <p>I am no longer providing help with these files.</p>
+            <button class="learn-more-btn" onclick="openModal()">Learn More</button>
+        </div>
+
         <h2 class="section-title">THE ARCHIVES</h2>
 
         <section class="engine">
             <h3>Engine 10038</h3>
             <span class="tag working">STABLE & WORKING</span>
-            <p>This is the one you want for playing. It's a complete, classic version with a working Client and Server. Perfect for hosting your own private world and inviting friends. Reliable and ready to go.</p>
-            <div class="pro-tip">
-                <strong>Multiplayer Tip:</strong> To let friends join your server online, you'll need a free tool called <a href="https://playit.gg" target="_blank">playit.gg</a>. It opens your server to the internet without any complicated port forwarding.
+            <p>This is the one you want for playing. It's a complete, classic version with a working Client and Server. The one Gytis gave me. Perfect for hosting your own private world and inviting friends.</p>
+            
+            <div class="chaos-tip">
+                <strong>My Advice:</strong> My solution to the drama was to turn my server into a No Rules, Free Admin Land. Embrace the chaos. Let everyone have power.
             </div>
+            
             <a href="https://archive.org/details/engine10038" class="download-btn" target="_blank">Download Engine 10038</a>
         </section>
 
         <section class="engine">
             <h3>Engine 10072 / 10068</h3>
             <span class="tag bricked">THE 2020 ENGINE (BRICKED)</span>
-            <p>This is the one that started the drama. It's the authentic 2020 engine, but its database functions are broken. It's a piece of history, and now it belongs to everyone.</p>
+            <p>This is the one that started it all. The authentic 2020 engine that got me banned from BlockyVerse. Its database functions are broken, but it's the piece of history that caused the entire war. Now it belongs to everyone.</p>
             <a href="https://archive.org/download/engine-10072-blockmango" class="download-btn" target="_blank">Download Engine 10072</a>
-        </section>
-
-        <!-- ADDED THIS SECTION -->
-        <section class="call-to-action">
-            <h2>Let's Stop Them From Ruining The Game</h2>
-            <p>They won't listen unless we're loud. If you're tired of the pay-to-win updates and weird AI stuff, here's how to send a clear message. Be consistent, be firm, but don't be toxic.</p>
-            <ul>
-                <li><strong>On YouTube:</strong> Go to the official Blockman GO channel. On their most recent videos, post comments like "BRING BACK THE OLD BLOCKMAN GO!" or "NO MORE PAY-TO-WIN!"</li>
-                <li><strong>On Discord:</strong> Join their official server. In the feedback and general channels, let them know what the community really wants. Tell them to listen to their classic players.</li>
-                <li><strong>On Social Media:</strong> Every time they post, reply with the same message. Make our voices impossible to ignore.</li>
-            </ul>
         </section>
 
         <footer>
             <p>Archived and shared by Steve Xinpa.</p>
-            <p>This is an unofficial community project. For educational and preservation purposes only.</p>
+            <p>The full story is here. Use these files however you want.</p>
         </footer>
     </div>
+
+    <!-- POPUP MODAL HTML -->
+    <div class="modal-overlay" id="support-modal">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeModal()">&times;</button>
+            <h2>Why I Can't Help Anymore</h2>
+            <p>I need to be very clear about this: I have quit. The files are here for you to use, but my involvement ends now.</p>
+            <p>The amount of stress, drama, and personal problems this whole situation has caused is more than I'm willing to handle. Answering questions, troubleshooting bugs, and helping with setups just keeps me tied to a past I need to move on from. It's a massive mental drain.</p>
+            <p>This project is now fully in the hands of the community. You have the files. It's up to you to learn, experiment, and help each other. I've given you the tools, but I can no longer be the support line. I need to get my life back.</p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR MODAL -->
+    <script>
+        const modal = document.getElementById('support-modal');
+
+        function openModal() {
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // Optional: close modal by clicking the background
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
 
 </body>
 </html>
