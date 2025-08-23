@@ -13,17 +13,20 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-website-url.com/"> <!-- Optional: Replace with your URL -->
+    <meta property="og:url" content="https://your-website-url.com/">
     <meta property="og:title" content="The Blockman Go Preservation Project">
     <meta property="og:description" content="Here's what really happened. The full story and all the files.">
-    <meta property="og:image" content="https://i.imgur.com/YOUR-IMAGE-ID.png"> <!-- Replace with a compelling screenshot -->
+    <meta property="og:image" content="https://i.imgur.com/YOUR-IMAGE-ID.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://your-website-url.com/"> <!-- Optional: Replace with your URL -->
+    <meta property="twitter:url" content="https://your-website-url.com/">
     <meta property="twitter:title" content="The Blockman Go Preservation Project">
     <meta property="twitter:description" content="Here's what really happened. The full story and all the files.">
-    <meta property="twitter:image" content="https://i.imgur.com/YOUR-IMAGE-ID.png"> <!-- Replace with a compelling screenshot -->
+    <meta property="twitter:image" content="https://i.imgur.com/YOUR-IMAGE-ID.png">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- Root Variables & Base Styles --- */
@@ -35,6 +38,7 @@
             --color-primary: #ff4747;
             --color-secondary: #ffc107;
             --color-accent: #00e5ff;
+            --color-success: #28a745;
             --font-body: 'Poppins', sans-serif;
             --font-heading: 'Source Code Pro', monospace;
         }
@@ -60,24 +64,20 @@
             padding: 2rem 1rem;
         }
 
-        /* --- Layout --- */
+        /* --- Layout & Typography --- */
         .container {
             max-width: 800px;
             width: 100%;
             margin: 0 auto;
         }
-
-        /* --- Typography --- */
         h1, h2, h3 {
             font-family: var(--font-heading);
             color: #fff;
             line-height: 1.3;
         }
-
         strong {
             color: #fff;
         }
-
         a {
             color: var(--color-accent);
             text-decoration: none;
@@ -118,21 +118,28 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .card h2 { margin-top: 0; }
-        .card--primary { border-left-color: var(--color-primary); }
-        .card--accent { border-left-color: var(--color-accent); }
-        
+        .card h2 {
+            margin-top: 0;
+        }
+        .card--primary {
+            border-left-color: var(--color-primary);
+        }
+        .card--accent {
+            border-left-color: var(--color-accent);
+        }
+        .card--success {
+            border-left-color: var(--color-success);
+        }
+
         .section-title {
             text-align: center;
             font-size: 2rem;
-            margin-bottom: 2rem;
-            margin-top: 4rem;
+            margin: 4rem 0 2rem 0;
         }
-        
+
         .manifesto h3 {
             color: var(--color-primary);
             margin-top: 2rem;
-            margin-bottom: 0.5rem;
             border-bottom: 1px solid #333;
             padding-bottom: 0.5rem;
         }
@@ -143,13 +150,16 @@
             margin-bottom: 2rem;
             border-radius: 6px;
             border: 1px solid #333;
-            transition: border-color 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s ease;
         }
-        .download-card:hover {
+        .download-card:not(.download-card--disabled):hover {
             border-color: var(--color-primary);
             transform: translateY(-5px);
         }
-        .download-card h3 { margin: 0 0 0.5rem 0; font-size: 1.5rem; }
+        .download-card h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+        }
         .download-card .tag {
             display: inline-block;
             background-color: #333;
@@ -160,10 +170,18 @@
             font-weight: bold;
             margin-bottom: 1rem;
         }
-        .tag.working { background-color: #28a745; }
-        .tag.bricked { background-color: #6c757d; }
-        
-        .chaos-tip {
+        .tag.working { background-color: var(--color-success); }
+        .tag.redacted { background-color: #6c757d; }
+
+        .download-card--disabled {
+            opacity: 0.6;
+            filter: grayscale(50%);
+        }
+        .download-card--disabled h3 .strikethrough {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        .redacted-notice {
             background-color: #2b1d1d;
             border-left: 4px solid var(--color-primary);
             padding: 1rem;
@@ -172,8 +190,19 @@
             font-size: 0.9rem;
         }
 
+        .chaos-tip {
+            background-color: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid var(--color-secondary);
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
         .download-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             background-color: var(--color-primary);
             color: #fff;
             padding: 0.8rem 1.5rem;
@@ -183,7 +212,10 @@
             margin-top: 1.5rem;
             transition: background-color 0.2s ease, transform 0.2s ease;
         }
-        .download-btn:hover { background-color: #d63434; transform: translateY(-2px); }
+        .download-btn:hover {
+            background-color: #d63434;
+            transform: translateY(-2px);
+        }
 
         .evidence-box {
             background-color: transparent;
@@ -193,7 +225,9 @@
             border-radius: 6px;
         }
         .evidence-box a {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             background-color: #555;
             color: #fff;
             padding: 0.8rem 1.5rem;
@@ -203,26 +237,52 @@
             margin-top: 1.5rem;
             transition: background-color 0.2s, transform 0.2s;
         }
-        .evidence-box a:hover { background-color: #777; transform: translateY(-2px); text-decoration: none; }
-        
+        .evidence-box a:hover {
+            background-color: #777;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
         .final-note {
             background-color: var(--color-surface);
             padding: 1.5rem 2rem;
             border-radius: 4px;
             text-align: center;
         }
-        .final-note p { margin: 0 0 1rem 0; font-size: 1.1rem; color: #fff; }
-        .learn-more-btn {
-            background: none; border: 1px solid #666; color: var(--color-text); padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; transition: all 0.2s ease;
+        .final-note p {
+            margin: 0 0 1rem 0;
+            font-size: 1.1rem;
+            color: #fff;
         }
-        .learn-more-btn:hover { background-color: #333; color: #fff; }
+        .learn-more-btn {
+            background: none;
+            border: 1px solid #666;
+            color: var(--color-text);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .learn-more-btn:hover {
+            background-color: #333;
+            color: #fff;
+        }
 
         /* --- Footer --- */
         footer {
-            text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #333; color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: var(--color-text-muted);
         }
         footer p { margin: 0.5rem 0; }
-        footer .disclaimer { font-size: 0.8rem; font-style: italic; margin-top: 2rem; opacity: 0.7; }
+        footer .disclaimer {
+            font-size: 0.8rem;
+            font-style: italic;
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
 
         /* --- Modal --- */
         .modal-overlay {
@@ -283,26 +343,24 @@
 
         <section class="card card--primary manifesto anim-on-scroll">
             <h2>The Full, Unfiltered Story.</h2>
-
             <h3>Gytis's Mistake (How It Started)</h3>
             <p>Let's be clear: <strong>I didn't start this, but I'm going to finish it.</strong> The person who kicked this all off was my friend, <strong>Gytis.</strong> He made a dumb decision. For some apps—yes, really, just for some apps—he gave me the server engine. He was never supposed to, and that single act was a betrayal of our other friend, <strong>Vasu.</strong> That's how it all began.</p>
-
             <h3>My Reaction (How I Ended It)</h3>
-            <p>Now, my part. I'm not innocent. I accepted the files, which made me part of the betrayal. My mistake was being naive and making a YouTube video about the 2020 engine. The chaos was instant. The fallout was fast. I was banned from Vasu's Discord project, <strong>'BlockyVerse'</strong>, for the video.</p>
-            <p>That was the final straw. The whole problem was that these engines were <strong>rare</strong>. That rarity is what people used for power. After the ban, I decided to destroy the one thing they cared about: the secrecy. I turned my server into a <strong>No Rules, Free Admin Land,</strong> and leaked the conversations back to Vasu. Now, I'm ending it for good by making these files public. If they aren't rare anymore, they can't be used as a weapon. The power trip is over.</p>
+            <p>My mistake was being naive and making a YouTube video about the 2020 engine. The fallout was fast. I was banned from Vasu's Discord project, <strong>'BlockyVerse'</strong>, for the video. That was the final straw. The whole problem was that these engines were <strong>rare</strong>. After the ban, I decided to destroy the one thing they cared about: the secrecy. I turned my server into a <strong>No Rules, Free Admin Land,</strong> and eventually made these files public. The power trip was over.</p>
+        </section>
+
+        <section class="card card--success anim-on-scroll">
+            <h2 style="color: var(--color-success);"><i class="fas fa-handshake"></i> UPDATE: A Truce Was Reached</h2>
+            <p>After this page went live, I was contacted by <strong>Vasu</strong>. He offered to unban me from the BlockyVerse project and end this conflict under one condition: that I remove the engine at the heart of the drama (10068/10072) and its API from public access.</p>
+            <p><strong>I have accepted his terms.</strong> The war is over. To honor the agreement, the link to that specific engine has been redacted. The project's primary goal—to end the gatekeeping—has been achieved.</p>
         </section>
 
         <section class="card evidence-box anim-on-scroll">
             <h2>Exhibit A: The Video That Caused The War</h2>
             <p>This is it. The video that started everything. It made such a splash that even the famous Blockman Go hacker <strong>eternalhacker bg</strong> commented on it. This is what got me banned and led to everything you see here.</p>
-            <a href="https://www.youtube.com/watch?v=yRtC0BvvZh0" target="_blank" rel="noopener noreferrer">Watch The Video on YouTube</a>
+            <a href="https://www.youtube.com/watch?v=yRtC0BvvZh0" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Watch The Video on YouTube</a>
         </section>
         
-        <section class="card card--accent anim-on-scroll">
-            <h3 style="margin-top:0; color: var(--color-accent);">Important Notice</h3>
-            <p>The files offered here are <strong>precompiled</strong>. You are downloading ready-to-run game clients and servers, not the source code. These versions work perfectly on Windows 11. To compile the engines from scratch, you would need the original source code (not included here) and would have to run Windows 10.</p>
-        </section>
-
         <div class="final-note anim-on-scroll">
             <p>I am no longer providing help with these files.</p>
             <button class="learn-more-btn" onclick="openModal()">Learn Why</button>
@@ -313,29 +371,31 @@
         <section class="download-card anim-on-scroll">
             <h3>Engine 10038</h3>
             <span class="tag working">STABLE & WORKING</span>
-            <p>This is the one you want for playing. It's a complete, classic version with a working Client and Server. The one Gytis gave me. Perfect for hosting your own private world and inviting friends.</p>
+            <p>This is the one you want for playing. It's a complete, classic version with a working Client and Server. Crucially, <strong>this engine remains available as it was developed independently by Undead (from the Ultra GO project)</strong> and is not part of the original conflict with Vasu.</p>
             <div class="chaos-tip">
-                <strong>My Advice:</strong> My solution to the drama was to turn my server into a No Rules, Free Admin Land. Embrace the chaos. Let everyone have power.
+                <strong>A Final Word of Advice:</strong> My solution to the drama was to turn my server into a No Rules, Free Admin Land. Embrace the chaos. Let everyone have power.
             </div>
-            <a href="https://archive.org/details/engine10038" class="download-btn" target="_blank" rel="noopener noreferrer">Download Engine 10038</a>
+            <a href="https://archive.org/details/engine10038" class="download-btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> Download Engine 10038</a>
         </section>
 
-        <section class="download-card anim-on-scroll">
-            <h3>Engine 10072 / 10068</h3>
-            <span class="tag bricked">THE 2020 ENGINE (BRICKED)</span>
-            <p>This is the one that started it all. The authentic 2020 engine that got me banned from BlockyVerse. Its database functions are broken, but it's the piece of history that caused the entire war. Now it belongs to everyone.</p>
-            <a href="https://archive.org/download/engine-10072-blockmango" class="download-btn" target="_blank" rel="noopener noreferrer">Download Engine 10072</a>
+        <section class="download-card download-card--disabled anim-on-scroll">
+            <h3><span class="strikethrough">Engine 10072 / 10068</span></h3>
+            <span class="tag redacted">ARCHIVED BY AGREEMENT</span>
+            <p>This is the one that started it all. The authentic 2020 engine that caused the entire conflict. It's a piece of history that now belongs to the past.</p>
+            <div class="redacted-notice">
+                <strong><i class="fas fa-lock"></i> This file is no longer publicly available.</strong> As part of the truce with Vasu, access to this engine has been removed to formally end the conflict.
+            </div>
         </section>
         
         <section class="card evidence-box anim-on-scroll">
             <h2>It's Your Problem Now</h2>
             <p>As I said, I'm done. But you all need a place to figure this stuff out. I've created a new, unmoderated Discord server. <strong>I will not be in it.</strong> It's a sandbox for the community to help each other, or more likely, to create a new circle of drama. Godspeed.</p>
-            <a href="https://discord.gg/5xResct6Kq" target="_blank" rel="noopener noreferrer">Join The Community Sandbox</a>
+            <a href="https://discord.gg/5xResct6Kq" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Join The Community Sandbox</a>
         </section>
 
         <footer>
             <p>Archived and shared by Steve Xinpa.</p>
-            <p>The full story is here. Use these files however you want.</p>
+            <p>The full story is here. The conflict is resolved.</p>
             <p class="disclaimer">One last thing. All the websites I've made, including this fucking one, were created with AI. That's the truth.</p>
         </footer>
     </main>
@@ -393,14 +453,15 @@
                 "This entire website was made with AI because my braincells are gone."
             ];
             
-            let factInterval;
-
             function hideLoadingScreen() {
-                clearInterval(factInterval);
-                loadingScreen.classList.add('hidden');
+                if (loadingScreen) {
+                    loadingScreen.classList.add('hidden');
+                }
             }
 
             function startLoadingAnimation() {
+                if (!loadingScreen || !factText) return;
+
                 let currentFactIndex = 0;
                 let currentCharIndex = 0;
                 let isDeleting = false;
@@ -412,13 +473,14 @@
                         if (currentCharIndex < 0) {
                             isDeleting = false;
                             currentFactIndex = (currentFactIndex + 1) % facts.length;
+                            setTimeout(typeFact, 500); // Pause before typing new fact
+                            return;
                         }
                     } else {
                         factText.textContent = currentFact.substring(0, currentCharIndex++);
                         if (currentCharIndex > currentFact.length) {
                             isDeleting = true;
-                            // Pause at the end of the sentence
-                            setTimeout(typeFact, 1500);
+                            setTimeout(typeFact, 2000); // Pause at the end of the sentence
                             return;
                         }
                     }
@@ -427,8 +489,6 @@
 
                 typeFact();
                 loadingScreen.addEventListener('click', hideLoadingScreen);
-                // Optional: Automatically hide after a certain time
-                // setTimeout(hideLoadingScreen, 15000); 
             }
             
             startLoadingAnimation();
@@ -438,6 +498,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
