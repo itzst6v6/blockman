@@ -45,14 +45,8 @@
 
         @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Poppins:wght@400;700&display=swap');
 
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-body);
             background-color: var(--color-bg);
@@ -65,43 +59,16 @@
         }
 
         /* --- Layout & Typography --- */
-        .container {
-            max-width: 800px;
-            width: 100%;
-            margin: 0 auto;
-        }
-        h1, h2, h3 {
-            font-family: var(--font-heading);
-            color: #fff;
-            line-height: 1.3;
-        }
-        strong {
-            color: #fff;
-        }
-        a {
-            color: var(--color-accent);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+        .container { max-width: 800px; width: 100%; margin: 0 auto; }
+        h1, h2, h3 { font-family: var(--font-heading); color: #fff; line-height: 1.3; }
+        strong { color: #fff; }
+        a { color: var(--color-accent); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { text-decoration: underline; }
 
         /* --- Header --- */
-        .header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(255, 71, 71, 0.5);
-        }
-        .header .subtitle {
-            font-size: 1.2rem;
-            color: var(--color-primary);
-            font-family: var(--font-heading);
-        }
+        .header { text-align: center; margin-bottom: 4rem; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 0 0 10px rgba(255, 71, 71, 0.5); }
+        .header .subtitle { font-size: 1.2rem; color: var(--color-primary); font-family: var(--font-heading); }
 
         /* --- Components --- */
         .card {
@@ -114,208 +81,73 @@
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        .card.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .card h2 {
-            margin-top: 0;
-        }
-        .card--primary {
-            border-left-color: var(--color-primary);
-        }
-        .card--accent {
-            border-left-color: var(--color-accent);
-        }
-        .card--success {
-            border-left-color: var(--color-success);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin: 4rem 0 2rem 0;
-        }
-
-        .manifesto h3 {
-            color: var(--color-primary);
-            margin-top: 2rem;
-            border-bottom: 1px solid #333;
-            padding-bottom: 0.5rem;
-        }
-
-        .download-card {
-            background-color: var(--color-surface);
-            padding: 1.5rem 2rem;
-            margin-bottom: 2rem;
-            border-radius: 6px;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-        }
-        .download-card:not(.download-card--disabled):hover {
-            border-color: var(--color-primary);
-            transform: translateY(-5px);
-        }
-        .download-card h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.5rem;
-        }
-        .download-card .tag {
-            display: inline-block;
-            background-color: #333;
-            color: #fff;
-            padding: 0.2rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
+        .card.is-visible { opacity: 1; transform: translateY(0); }
+        .card h2 { margin-top: 0; }
+        .card--primary { border-left-color: var(--color-primary); }
+        .card--success { border-left-color: var(--color-success); }
+        
+        .section-title { text-align: center; font-size: 2rem; margin: 4rem 0 2rem 0; }
+        
+        .download-card { background-color: var(--color-surface); padding: 1.5rem 2rem; margin-bottom: 2rem; border-radius: 6px; border: 1px solid #333; transition: all 0.3s ease; }
+        .download-card:not(.download-card--disabled):hover { border-color: var(--color-primary); transform: translateY(-5px); }
+        .download-card h3 { margin: 0 0 0.5rem 0; font-size: 1.5rem; }
+        .download-card .tag { display: inline-block; padding: 0.2rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: bold; margin-bottom: 1rem; color: #fff; }
         .tag.working { background-color: var(--color-success); }
         .tag.redacted { background-color: #6c757d; }
+        
+        .download-card--disabled { opacity: 0.6; filter: grayscale(50%); }
+        .download-card--disabled h3 .strikethrough { text-decoration: line-through; opacity: 0.7; }
+        .redacted-notice { background-color: #2b1d1d; border-left: 4px solid var(--color-primary); padding: 1rem; margin-top: 1.5rem; border-radius: 4px; font-size: 0.9rem; }
+        
+        .chaos-tip { background-color: rgba(255, 193, 7, 0.1); border-left: 4px solid var(--color-secondary); padding: 1rem; margin-top: 1.5rem; border-radius: 4px; font-size: 0.9rem; }
 
-        .download-card--disabled {
-            opacity: 0.6;
-            filter: grayscale(50%);
-        }
-        .download-card--disabled h3 .strikethrough {
-            text-decoration: line-through;
-            opacity: 0.7;
-        }
-        .redacted-notice {
-            background-color: #2b1d1d;
-            border-left: 4px solid var(--color-primary);
-            padding: 1rem;
-            margin-top: 1.5rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
+        .download-btn { display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--color-primary); color: #fff; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 1.5rem; transition: background-color 0.2s ease, transform 0.2s ease; border: none; cursor: pointer; font-family: var(--font-body); }
+        .download-btn:hover { background-color: #d63434; transform: translateY(-2px); }
 
-        .chaos-tip {
-            background-color: rgba(255, 193, 7, 0.1);
-            border-left: 4px solid var(--color-secondary);
-            padding: 1rem;
-            margin-top: 1.5rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
+        .evidence-box { background-color: transparent; border: 1px solid #555; padding: 2rem; text-align: center; border-radius: 6px; }
+        .evidence-box a { display: inline-flex; align-items: center; gap: 0.5rem; background-color: #555; color: #fff; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 1.5rem; transition: background-color 0.2s, transform 0.2s; }
+        .evidence-box a:hover { background-color: #777; transform: translateY(-2px); text-decoration: none; }
+        
+        .final-note { background-color: var(--color-surface); padding: 1.5rem 2rem; border-radius: 4px; text-align: center; }
+        .final-note p { margin: 0 0 1rem 0; font-size: 1.1rem; color: #fff; }
+        .learn-more-btn { background: none; border: 1px solid #666; color: var(--color-text); padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; transition: all 0.2s ease; }
+        .learn-more-btn:hover { background-color: #333; color: #fff; }
 
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: var(--color-primary);
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 1.5rem;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-        }
-        .download-btn:hover {
-            background-color: #d63434;
-            transform: translateY(-2px);
-        }
-
-        .evidence-box {
-            background-color: transparent;
-            border: 1px solid #555;
-            padding: 2rem;
-            text-align: center;
-            border-radius: 6px;
-        }
-        .evidence-box a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: #555;
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-top: 1.5rem;
-            transition: background-color 0.2s, transform 0.2s;
-        }
-        .evidence-box a:hover {
-            background-color: #777;
-            transform: translateY(-2px);
-            text-decoration: none;
-        }
-
-        .final-note {
-            background-color: var(--color-surface);
-            padding: 1.5rem 2rem;
-            border-radius: 4px;
-            text-align: center;
-        }
-        .final-note p {
-            margin: 0 0 1rem 0;
-            font-size: 1.1rem;
-            color: #fff;
-        }
-        .learn-more-btn {
-            background: none;
-            border: 1px solid #666;
-            color: var(--color-text);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .learn-more-btn:hover {
-            background-color: #333;
-            color: #fff;
-        }
-
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
-            color: var(--color-text-muted);
-        }
-        footer p { margin: 0.5rem 0; }
-        footer .disclaimer {
-            font-size: 0.8rem;
-            font-style: italic;
-            margin-top: 2rem;
-            opacity: 0.7;
-        }
+        footer { text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #333; color: var(--color-text-muted); }
+        footer .disclaimer { font-size: 0.8rem; font-style: italic; margin-top: 2rem; opacity: 0.7; }
 
         /* --- Modal --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; z-index: 1000; backdrop-filter: blur(5px);
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; z-index: 1000; backdrop-filter: blur(5px); }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content {
-            background: var(--color-surface); padding: 2rem; border-radius: 5px; max-width: 600px; width: 90%; border-top: 4px solid var(--color-primary); position: relative; transform: translateY(-50px); transition: transform 0.3s ease; max-height: 80vh; overflow-y: auto;
-        }
+        .modal-content { background: var(--color-surface); padding: 2rem; border-radius: 5px; max-width: 600px; width: 90%; border-top: 4px solid var(--color-primary); position: relative; transform: translateY(-50px); transition: transform 0.3s ease; max-height: 80vh; overflow-y: auto; }
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .modal-content h2 { margin-top: 0; color: #fff; }
         .modal-content ul { list-style: none; padding-left: 0; }
         .modal-content li::before { content: '»'; color: var(--color-primary); margin-right: 0.8rem; }
         .modal-close-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #666; font-size: 1.5rem; cursor: pointer; transition: color 0.2s ease; }
         .modal-close-btn:hover { color: #fff; }
+        
+        /* Download Modal Styles */
+        #download-terms-modal .modal-content { border-top-color: var(--color-secondary); }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; }
+        .modal-btn { padding: 0.7rem 1.5rem; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background-color 0.2s ease, transform 0.2s ease; font-family: var(--font-body); }
+        .modal-btn--agree { background-color: var(--color-success); color: #fff; }
+        .modal-btn--agree:hover { background-color: #218838; transform: translateY(-2px); }
+        .modal-btn--disagree { background-color: #555; color: #fff; }
+        .modal-btn--disagree:hover { background-color: #666; }
 
-        /* --- Loading Screen --- */
-        #loading-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-bg); z-index: 9999; display: flex; justify-content: center; align-items: center; text-align: center; cursor: pointer; transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
+        /* --- Loading Screen & Responsive Styles --- */
+        #loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-bg); z-index: 9999; display: flex; justify-content: center; align-items: center; text-align: center; cursor: pointer; transition: opacity 0.5s ease, visibility 0.5s ease; }
         #loading-screen.hidden { opacity: 0; visibility: hidden; }
         .loading-content h2 { font-family: var(--font-heading); color: var(--color-text-muted); margin-bottom: 1rem; font-size: 1rem; letter-spacing: 2px;}
         #fact-text { font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-primary); min-height: 50px; }
         #fact-text::after { content: '_'; animation: blink 1s step-end infinite; }
         @keyframes blink { 50% { opacity: 0; } }
         
-        /* --- Responsive Design --- */
         @media (max-width: 768px) {
             body { padding: 1rem; }
             .header h1 { font-size: 2rem; }
             .card, .download-card { padding: 1.5rem; }
-            .section-title { font-size: 1.5rem; }
-            .download-card h3 { font-size: 1.25rem; }
         }
     </style>
 </head>
@@ -338,32 +170,30 @@
         <section class="card anim-on-scroll">
             <h2>So, What Is This?</h2>
             <p>You're witnessing the final chapter of a long, stupid drama over a video game. This website is the public execution of a secret that caused far too many problems.</p>
-            <p>For too long, a select few used these 'rare' Blockman Go engines for power and gatekeeping. This page ends that. Below is the full, unfiltered story of how it all fell apart. Welcome to the end of the war.</p>
         </section>
 
         <section class="card card--primary manifesto anim-on-scroll">
             <h2>The Full, Unfiltered Story.</h2>
             <h3>Gytis's Mistake (How It Started)</h3>
-            <p>Let's be clear: <strong>I didn't start this, but I'm going to finish it.</strong> The person who kicked this all off was my friend, <strong>Gytis.</strong> He made a dumb decision. For some apps—yes, really, just for some apps—he gave me the server engine. He was never supposed to, and that single act was a betrayal of our other friend, <strong>Vasu.</strong> That's how it all began.</p>
+            <p><strong>I didn't start this, but I'm going to finish it.</strong> The person who kicked this all off was my friend, <strong>Gytis.</strong> He betrayed our other friend, <strong>Vasu,</strong> by giving me a server engine he wasn't supposed to.</p>
             <h3>My Reaction (How I Ended It)</h3>
-            <p>My mistake was being naive and making a YouTube video about the 2020 engine. The fallout was fast. I was banned from Vasu's Discord project, <strong>'BlockyVerse'</strong>, for the video. That was the final straw. The whole problem was that these engines were <strong>rare</strong>. After the ban, I decided to destroy the one thing they cared about: the secrecy. I turned my server into a <strong>No Rules, Free Admin Land,</strong> and eventually made these files public. The power trip was over.</p>
+            <p>My mistake was making a YouTube video about the engine. The fallout was fast: I was banned from Vasu's project, 'BlockyVerse'. That was the final straw. To destroy the "rarity" they used for power, I made the files public. The power trip was over.</p>
         </section>
 
         <section class="card card--success anim-on-scroll">
             <h2 style="color: var(--color-success);"><i class="fas fa-handshake"></i> UPDATE: A Truce Was Reached</h2>
-            <p>After this page went live, I was contacted by <strong>Vasu</strong>. He offered to unban me from the BlockyVerse project and end this conflict under one condition: that I remove the engine at the heart of the drama (10068/10072) and its API from public access.</p>
-            <p><strong>I have accepted his terms.</strong> The war is over. To honor the agreement, the link to that specific engine has been redacted. The project's primary goal—to end the gatekeeping—has been achieved.</p>
+            <p>Vasu contacted me. He offered to unban me from BlockyVerse if I removed the engine at the heart of the drama (10068/10072). <strong>I have accepted his terms.</strong> The war is over. That engine link has been redacted below.</p>
         </section>
 
         <section class="card evidence-box anim-on-scroll">
             <h2>Exhibit A: The Video That Caused The War</h2>
-            <p>This is it. The video that started everything. It made such a splash that even the famous Blockman Go hacker <strong>eternalhacker bg</strong> commented on it. This is what got me banned and led to everything you see here.</p>
-            <a href="https://www.youtube.com/watch?v=yRtC0BvvZh0" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Watch The Video on YouTube</a>
+            <p>This is it. The video that started everything and got me banned.</p>
+            <a href="https://www.youtube.com/watch?v=yRtC0BvvZh0" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Watch The Video</a>
         </section>
         
         <div class="final-note anim-on-scroll">
             <p>I am no longer providing help with these files.</p>
-            <button class="learn-more-btn" onclick="openModal()">Learn Why</button>
+            <button class="learn-more-btn" onclick="openInfoModal()">Learn Why</button>
         </div>
 
         <h2 class="section-title anim-on-scroll">THE ARCHIVES</h2>
@@ -371,126 +201,123 @@
         <section class="download-card anim-on-scroll">
             <h3>Engine 10038</h3>
             <span class="tag working">STABLE & WORKING</span>
-            <p>This is the one you want for playing. It's a complete, classic version with a working Client and Server. Crucially, <strong>this engine remains available as it was developed independently by Undead (from the Ultra GO project)</strong> and is not part of the original conflict with Vasu.</p>
-            <div class="chaos-tip">
-                <strong>A Final Word of Advice:</strong> My solution to the drama was to turn my server into a No Rules, Free Admin Land. Embrace the chaos. Let everyone have power.
-            </div>
-            <a href="https://archive.org/details/engine10038" class="download-btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> Download Engine 10038</a>
+            <p>This is the one you want. Crucially, <strong>this engine was developed independently by Undead (from the Ultra GO project)</strong> and is not part of the original conflict with Vasu.</p>
+            <div class="chaos-tip"><strong>A Final Word of Advice:</strong> Embrace the chaos. Let everyone have power.</div>
+            <button class="download-btn" data-download-url="https://archive.org/details/engine10038">
+                <i class="fas fa-download"></i> Download Engine 10038
+            </button>
         </section>
 
         <section class="download-card download-card--disabled anim-on-scroll">
             <h3><span class="strikethrough">Engine 10072 / 10068</span></h3>
             <span class="tag redacted">ARCHIVED BY AGREEMENT</span>
-            <p>This is the one that started it all. The authentic 2020 engine that caused the entire conflict. It's a piece of history that now belongs to the past.</p>
-            <div class="redacted-notice">
-                <strong><i class="fas fa-lock"></i> This file is no longer publicly available.</strong> As part of the truce with Vasu, access to this engine has been removed to formally end the conflict.
-            </div>
+            <p>The authentic 2020 engine that caused the war. A piece of history that now belongs to the past.</p>
+            <div class="redacted-notice"><strong><i class="fas fa-lock"></i> This file is no longer public.</strong> Access was removed as part of the truce with Vasu.</div>
         </section>
         
         <section class="card evidence-box anim-on-scroll">
             <h2>It's Your Problem Now</h2>
-            <p>As I said, I'm done. But you all need a place to figure this stuff out. I've created a new, unmoderated Discord server. <strong>I will not be in it.</strong> It's a sandbox for the community to help each other, or more likely, to create a new circle of drama. Godspeed.</p>
+            <p>I created a new, unmoderated Discord server for the community. <strong>I will not be in it.</strong> Good luck.</p>
             <a href="https://discord.gg/5xResct6Kq" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Join The Community Sandbox</a>
         </section>
 
         <footer>
-            <p>Archived and shared by Steve Xinpa.</p>
-            <p>The full story is here. The conflict is resolved.</p>
+            <p>Archived and shared by Steve Xinpa. The conflict is resolved.</p>
             <p class="disclaimer">One last thing. All the websites I've made, including this fucking one, were created with AI. That's the truth.</p>
         </footer>
     </main>
 
-    <div class="modal-overlay" id="support-modal" role="dialog" aria-modal="true">
+    <!-- INFO MODAL -->
+    <div class="modal-overlay" id="info-modal" role="dialog" aria-modal="true">
         <div class="modal-content">
-            <button class="modal-close-btn" onclick="closeModal()" aria-label="Close dialog">&times;</button>
+            <button class="modal-close-btn" onclick="closeInfoModal()" aria-label="Close dialog">&times;</button>
             <h2>My Brain Is Now Smoother Than a Bowling Ball</h2>
-            <p>So you clicked. Welcome to the epilogue. Let's be brutally honest: after everything that happened, I have approximately <strong>negative five (-5) remaining braincells</strong> to dedicate to this project. Each question about "how 2 run srerver" has physically chipped away a piece of my sanity.</p>
-            <p>For a while, I tried to help. I really did. But my DMs turned into a cursed tech support hotline. My inbox is a graveyard of questions like:</p>
+            <p>So you clicked. Let's be brutally honest: after everything, I have <strong>negative five (-5) remaining braincells</strong> to dedicate to this project. My DMs turned into a cursed tech support hotline.</p>
             <ul>
                 <li>"How do I unzip this?"</li>
-                <li>"Where is the download button?" (It's right there.)</li>
                 <li>"Why isn't the engine labeled BRICKED working?"</li>
-                <li>"Can you add the new battle pass to the 2020 version?"</li>
                 <li>"My PC exploded is it a virus?"</li>
-                <li>"Can you teach me how to code an entire MMO from scratch?"</li>
             </ul>
-            <p>It's like being the only IT guy for a school of people who try to drink from the bottom of the cup. The amount of mental energy I've spent is non-refundable. My brain's warranty has expired. I am a husk.</p>
-            <p>So, this project is now fully and completely open-source in spirit. <strong>It's your problem now, lol.</strong> You have the files. You have the tools. The rest is up to you. Figure it out. Help each other. Start a wiki, a Discord, a smoke signal service, I don't care.</p>
-            <p>My watch has ended. I have given you the keys to the car. Do not ask me for driving lessons. I'm going to go touch grass and try to remember what the sun looks like.</p>
+            <p>This project is now fully open-source in spirit. <strong>It's your problem now, lol.</strong> You have the files. You have the tools. The rest is up to you. My watch has ended.</p>
+        </div>
+    </div>
+
+    <!-- DOWNLOAD TERMS MODAL -->
+    <div class="modal-overlay" id="download-terms-modal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeDownloadModal()" aria-label="Close dialog">&times;</button>
+            <h2><i class="fas fa-exclamation-triangle" style="color: var(--color-secondary);"></i> Disclaimer & Terms of Use</h2>
+            <p>This software is provided <strong>"as-is"</strong> without any warranties, express or implied.</p>
+            <p>The software available for download is the property of its original developers (<strong>UNDEAD / ROYALCRAFT</strong>) and is not owned, maintained, or endorsed by Steve Xinpa (the archivist) or Vasu.</p>
+            <p>By proceeding, you acknowledge that you are <strong>solely responsible</strong> for your use of this software. Any consequences, damages, or legal issues arising from its installation or use are entirely your own responsibility.</p>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn--disagree" onclick="closeDownloadModal()">Disagree</button>
+                <button id="agree-and-download-btn" class="modal-btn modal-btn--agree">Agree & Download</button>
+            </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
             // --- Modal Logic ---
-            const modal = document.getElementById('support-modal');
-            window.openModal = () => modal.classList.add('active');
-            window.closeModal = () => modal.classList.remove('active');
+            const infoModal = document.getElementById('info-modal');
+            const downloadModal = document.getElementById('download-terms-modal');
+            let pendingDownloadUrl = null;
+
+            window.openInfoModal = () => infoModal.classList.add('active');
+            window.closeInfoModal = () => infoModal.classList.remove('active');
             
-            modal.addEventListener('click', (event) => {
-                if (event.target === modal) closeModal();
+            const openDownloadModal = () => downloadModal.classList.add('active');
+            window.closeDownloadModal = () => {
+                downloadModal.classList.remove('active');
+                pendingDownloadUrl = null;
+            };
+
+            document.querySelector('.download-btn[data-download-url]').addEventListener('click', (event) => {
+                event.preventDefault();
+                pendingDownloadUrl = event.currentTarget.dataset.downloadUrl;
+                openDownloadModal();
+            });
+            
+            document.getElementById('agree-and-download-btn').addEventListener('click', () => {
+                if (pendingDownloadUrl) {
+                    window.open(pendingDownloadUrl, '_blank');
+                }
+                closeDownloadModal();
             });
 
+            infoModal.addEventListener('click', (event) => { if (event.target === infoModal) closeInfoModal(); });
+            downloadModal.addEventListener('click', (event) => { if (event.target === downloadModal) closeDownloadModal(); });
+
             document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && modal.classList.contains('active')) {
-                    closeModal();
+                if (event.key === 'Escape') {
+                    if (infoModal.classList.contains('active')) closeInfoModal();
+                    if (downloadModal.classList.contains('active')) closeDownloadModal();
                 }
             });
 
             // --- Loading Screen Logic ---
             const loadingScreen = document.getElementById('loading-screen');
             const factText = document.getElementById('fact-text');
-            
-            const facts = [
-                "It all started when Gytis betrayed Vasu...",
-                "I was given the server engine as part of that betrayal.",
-                "A single YouTube video caused the entire war.",
-                "The fallout got me banned from the 'BlockyVerse' project.",
-                "My reaction was to turn my server into a 'No Rules, Free Admin Land'.",
-                "I leaked our server conversations back to Vasu to fuel the chaos.",
-                "The only way to end the drama was to make the files public.",
-                "This entire website was made with AI because my braincells are gone."
-            ];
-            
-            function hideLoadingScreen() {
-                if (loadingScreen) {
-                    loadingScreen.classList.add('hidden');
-                }
-            }
-
+            const facts = [ "It all started when Gytis betrayed Vasu...", "A single YouTube video caused the entire war.", "The fallout got me banned from the 'BlockyVerse' project.", "My reaction was to create a 'No Rules, Free Admin Land'.", "The only way to end the drama was to make the files public.", "This entire website was made with AI because my braincells are gone." ];
+            function hideLoadingScreen() { if (loadingScreen) loadingScreen.classList.add('hidden'); }
             function startLoadingAnimation() {
                 if (!loadingScreen || !factText) return;
-
-                let currentFactIndex = 0;
-                let currentCharIndex = 0;
-                let isDeleting = false;
-
+                let factIndex = 0, charIndex = 0, isDeleting = false;
                 function typeFact() {
-                    const currentFact = facts[currentFactIndex];
+                    const currentFact = facts[factIndex];
                     if (isDeleting) {
-                        factText.textContent = currentFact.substring(0, currentCharIndex--);
-                        if (currentCharIndex < 0) {
-                            isDeleting = false;
-                            currentFactIndex = (currentFactIndex + 1) % facts.length;
-                            setTimeout(typeFact, 500); // Pause before typing new fact
-                            return;
-                        }
+                        factText.textContent = currentFact.substring(0, charIndex--);
+                        if (charIndex < 0) { isDeleting = false; factIndex = (factIndex + 1) % facts.length; setTimeout(typeFact, 500); return; }
                     } else {
-                        factText.textContent = currentFact.substring(0, currentCharIndex++);
-                        if (currentCharIndex > currentFact.length) {
-                            isDeleting = true;
-                            setTimeout(typeFact, 2000); // Pause at the end of the sentence
-                            return;
-                        }
+                        factText.textContent = currentFact.substring(0, charIndex++);
+                        if (charIndex > currentFact.length) { isDeleting = true; setTimeout(typeFact, 2000); return; }
                     }
                     setTimeout(typeFact, isDeleting ? 40 : 80);
                 }
-
                 typeFact();
                 loadingScreen.addEventListener('click', hideLoadingScreen);
             }
-            
             startLoadingAnimation();
 
             // --- Scroll Reveal Animation ---
@@ -502,10 +329,7 @@
                     }
                 });
             }, { threshold: 0.1 });
-
-            document.querySelectorAll('.anim-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
+            document.querySelectorAll('.anim-on-scroll').forEach(el => observer.observe(el));
         });
     </script>
 
